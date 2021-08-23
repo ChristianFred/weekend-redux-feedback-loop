@@ -15,11 +15,11 @@ import CompletedSurvey from '../CompletedSurvey/CompletedSurvey';
 
 function App() {
   const dispatch = useDispatch();
-
+// when the page runs execute run getFeedback
   useEffect(() => {
     getFeedback();
   }, []);
-
+// gets the list of feedback from the database.
   const getFeedback = () => {
     axios({
       method: 'GET',
@@ -33,7 +33,7 @@ function App() {
       console.error('GET /api/feedback failed', error);
     })
   }
-
+// adds a new item from the form inputs to the database.
   const addFeedbackItem = (newItem) => {
     axios
       .post('/api/feedback', newItem)
@@ -47,6 +47,7 @@ function App() {
   };
 
   return (
+    // The navigation and routes below are for the different single page apps.
     <div className='App'>
       <Router>
         <header className='App-header'>

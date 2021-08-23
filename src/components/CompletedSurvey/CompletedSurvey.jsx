@@ -2,7 +2,7 @@ import { useHistory } from 'react-router-dom';
 
 function CompletedSurvey(feeling,understanding,support,comments) {
     const history = useHistory();
-
+    // This handle submit clears the related fields and then sends you back to the beginning.
     const handleSubmit = event => {
         event.preventDefault();
         feeling = '';

@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 function OrderDetails({addFeedbackItem}) {
     const history = useHistory();
-
+    // all the selectors grab the data from the various pages and allows us to use it here.
     const feelings = useSelector(store => store.FeelingReducer)
     console.log('this is our feelings', feelings);
 
@@ -15,18 +15,20 @@ function OrderDetails({addFeedbackItem}) {
 
     const comments = useSelector(store => store.CommentsReducer)
     console.log('this is our comments', comments);
-    
+    // creating a new item to hold the condensed values.
     const newItem = {
         feelings: feelings,
         understanding: understanding,
         support: support,
         comments: comments,
     }
+    // once clicked it runs the post command for adding a new item to the database. (or it should)
     function onClick(){
         addFeedbackItem(newItem);
         history.push('/CompletedSurvey');
     }
     return (
+        // All of this below is showing the various data points on the DOM for the user to see.
         <div>
             <h3> Review Reflection </h3>
             {feelings.map((feeling, i) => {

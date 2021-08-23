@@ -16,6 +16,7 @@ import {
     Provider
 } from 'react-redux';
 
+// Reducers for the various questions
 const FeelingReducer = (state = [], action) => {
     if (action.type === 'ADD_FEELING') {
         return [...state, action.payload]
@@ -44,6 +45,7 @@ const CommentsReducer = (state = [], action) => {
     return state;
 }
 
+// redux store with reducers inside of it.
 const storeInstance = createStore(
     combineReducers({
 

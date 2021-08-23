@@ -7,7 +7,8 @@ function SupportInput() {
     const dispatch = useDispatch();
     const [support, setSupport] = useState('');
     const history = useHistory();
-
+    // handle submit runs when the user clicks the next button. It saves the value entered and sends a
+    // message to the index reducers if it qualifies. 
     const handleSubmit = event => {
         event.preventDefault();
 
@@ -27,6 +28,7 @@ function SupportInput() {
         }
     }
     return (
+        // input value for the related question.
         <>
             <h2>How supported do you feel?</h2>
             <form onSubmit={handleSubmit} className="addSupportInput">

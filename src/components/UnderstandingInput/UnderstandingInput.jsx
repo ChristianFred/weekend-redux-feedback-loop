@@ -7,7 +7,8 @@ function UnderstandingInput() {
     const dispatch = useDispatch();
     const [understanding, setUnderstanding] = useState('');
     const history = useHistory();
-
+    // handle submit runs when the user clicks the next button. It saves the value entered and sends a
+    // message to the index reducers if it qualifies. 
     const handleSubmit = event => {
         event.preventDefault();
         if (understanding === "") {
@@ -26,6 +27,7 @@ function UnderstandingInput() {
         }
     }
     return (
+        // input value for the related question.
         <>
             <h2>How are you Understanding the Material?</h2>
             <form onSubmit={handleSubmit} className="addUnderstandingInput">
