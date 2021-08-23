@@ -5,6 +5,7 @@ import App from './components/App/App';
 import registerServiceWorker from './registerServiceWorker';
 import logger from 'redux-logger';
 
+
 //Redux stuff
 import {
     createStore,

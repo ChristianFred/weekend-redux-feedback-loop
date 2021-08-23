@@ -11,7 +11,7 @@ function SupportInput() {
     const handleSubmit = event => {
         event.preventDefault();
 
-        if (support === " ") {
+        if (support === "") {
             alert("There needs to be a number input in the field");
         }
         else if (support < 0 || support > 10) {
@@ -31,7 +31,7 @@ function SupportInput() {
             <h2>How supported do you feel?</h2>
             <form onSubmit={handleSubmit} className="addSupportInput">
                 <input
-                    input type="number"
+                    type="number"
                     placeholder=" 1 through 10"
                     value={support}
                     onChange={(event) => setSupport(event.target.value)}

@@ -10,7 +10,7 @@ function CompletedSurvey(feeling,understanding,support,comments) {
         support = '';
         comments = '';
         console.log(feeling,understanding,support,comments);
-        history.push('/FeelingInput');
+        history.push('/');
     }
     return (
         <>

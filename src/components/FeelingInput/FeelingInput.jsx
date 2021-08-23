@@ -31,7 +31,7 @@ function FeelingInput() {
             <h2>How are you feeling today?</h2>
             <form onSubmit={handleSubmit} className="addPizzaForm">
                 <input
-                    input type ="number"
+                    type ="number"
                     placeholder=" 1 through 10"
                     value={feeling}
                     onChange={(event) => setFeeling(event.target.value)}

@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-function OrderDetails(addFeedbackItem) {
+function OrderDetails({addFeedbackItem}) {
     const history = useHistory();
 
     const feelings = useSelector(store => store.FeelingReducer)
@@ -16,15 +16,14 @@ function OrderDetails(addFeedbackItem) {
     const comments = useSelector(store => store.CommentsReducer)
     console.log('this is our comments', comments);
     
-    const newFeedback = {
+    const newItem = {
         feelings: feelings,
         understanding: understanding,
         support: support,
-        comments: comments
+        comments: comments,
     }
-    const handleSubmit = event => {
-        event.preventDefault();
-        addFeedbackItem(newFeedback);
+    function onClick(){
+        addFeedbackItem(newItem);
         history.push('/CompletedSurvey');
     }
     return (
@@ -61,7 +60,7 @@ function OrderDetails(addFeedbackItem) {
                     </div>
                 )
             })}
-            <button onClick={handleSubmit}> Complete Reflection </button>
+            <button onClick={onClick}> Complete Reflection </button>
         </div>
 
     )

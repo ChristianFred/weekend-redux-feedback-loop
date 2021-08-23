@@ -1,7 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 import './App.css';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
+
+// These are my component pages
 import FeelingInput from '../FeelingInput/FeelingInput';
 import UnderstandingInput from '../UnderstandingInput/UnderstandingInput';
 import SupportInput from '../SupportInput/SupportInput';
@@ -19,20 +23,20 @@ function App() {
   const getFeedback = () => {
     axios({
       method: 'GET',
-      url: '/feedbackRouter'
+      url: '/api/feedback'
     }).then((response) => {
       dispatch({
         type: 'SET_FEEDBACK_LIST',
         payload: response.data
       })
     }).catch(error => {
-      console.error('GET /feedbackRouter failed', error);
+      console.error('GET /api/feedback failed', error);
     })
   }
 
-  const addFeedbackItem = (newFeedback) => {
+  const addFeedbackItem = (newItem) => {
     axios
-      .post('/feedbackRouter', newFeedback)
+      .post('/api/feedback', newItem)
       .then((response) => {
         getFeedback();
       })
@@ -41,7 +45,7 @@ function App() {
         console.error('Error adding to feedback', error);
       });
   };
-  
+
   return (
     <div className='App'>
       <Router>
@@ -50,7 +54,7 @@ function App() {
           <h4> Don't forget it!</h4>
 
         </header>
-        <Route path="/">
+        <Route path="/" exact>
           <FeelingInput/>
 
         </Route>
