@@ -1,15 +1,15 @@
 import { useHistory } from 'react-router-dom';
 
-function CompletedSurvey(feelings,understanding,support,comments) {
+function CompletedSurvey(feeling,understanding,support,comments) {
     const history = useHistory();
 
     const handleSubmit = event => {
         event.preventDefault();
-        feelings = '';
+        feeling = '';
         understanding = '';
         support = '';
         comments = '';
-        console.log(feelings,understanding,support,comments);
+        console.log(feeling,understanding,support,comments);
         history.push('/FeelingInput');
     }
     return (

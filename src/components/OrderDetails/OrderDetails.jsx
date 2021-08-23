@@ -1,10 +1,8 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import axios from 'axios';
 
 function OrderDetails() {
-
+    const history = useHistory();
 
     const feelings = useSelector(store => store.FeelingReducer)
     console.log('this is our feelings', feelings);
@@ -17,26 +15,17 @@ function OrderDetails() {
 
     const comments = useSelector(store => store.CommentsReducer)
     console.log('this is our comments', comments);
-    const history = useHistory();
-
+    
+    const newFeedback = {
+        feelings: feelings,
+        understanding: understanding,
+        support: support,
+        comments: comments
+    }
     const handleSubmit = event => {
         event.preventDefault();
-
-        axios({
-            method: 'POST',
-            url: '/feedbackRouter',
-            data: { 
-                feelings,
-                understanding,
-                support,
-                comments
-            }
-        }).then((response) => {
-            console.log(response);
-            history.push('/CompletedSurvey');
-        }).catch((err) => {
-            console.log(err);
-        });
+        addFeedbackItem(newFeedback);
+        history.push('./CompletedSurvey');
     }
     return (
         <div>
