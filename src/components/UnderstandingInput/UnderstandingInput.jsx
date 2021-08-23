@@ -10,7 +10,7 @@ function UnderstandingInput() {
 
     const handleSubmit = event => {
         event.preventDefault();
-        if (understanding === " ") {
+        if (understanding === "") {
             alert("There needs to be a number input in the field");
         }
         else if (understanding < 0 || understanding > 10) {
