@@ -10,7 +10,37 @@ import CompletedSurvey from '../CompletedSurvey/CompletedSurvey';
 import { useSelector } from 'react-redux';
 
 function App() {
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    getFeedback();
+  }, []);
+
+  const getFeedback = () => {
+    axios({
+      method: 'GET',
+      url: '/feedbackRouter'
+    }).then((response) => {
+      dispatch({
+        type: 'SET_FEEDBACK_LIST',
+        payload: response.data
+      })
+    }).catch(error => {
+      console.error('GET /feedbackRouter failed', error);
+    })
+  }
+
+  const addFeedbackItem = (newItem) => {
+    axios
+      .post('/feedbackRouter', newItem)
+      .then((response) => {
+        getFeedback();
+      })
+      .catch((error) => {
+        alert(`Couldn't add feedback item`);
+        console.error('Error adding to feedback', error);
+      });
+  };
   return (
     <div className='App'>
       <Router>
@@ -19,7 +49,7 @@ function App() {
           <h4> Don't forget it!</h4>
 
         </header>
-        <Route path="/FeelingInput" exact>
+        <Route path="/">
           <FeelingInput/>
 
         </Route>

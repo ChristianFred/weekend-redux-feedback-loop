@@ -3,11 +3,11 @@ const router = express.Router();
 const pool = require('../modules/pool');
 
 router.get('/', (req, res) => {
-    console.log('GET prime_feedback');
+    console.log('GET feedbackRouter');
     pool.query('SELECT * FROM "prime_feedback";').then((result) => {
         res.send(result.rows);
     }).catch((error) => {
-        console.log('GET error prime_feedback', error)
+        console.log('GET error feedbackRouter', error)
         res.sendStatus(500);
 
     });
