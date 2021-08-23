@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import './App.css';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import FeelingInput from '../FeelingInput/FeelingInput';
@@ -7,7 +8,6 @@ import SupportInput from '../SupportInput/SupportInput';
 import CommentsInput from '../CommentsInput/CommentsInput';
 import OrderDetails from '../OrderDetails/OrderDetails';
 import CompletedSurvey from '../CompletedSurvey/CompletedSurvey';
-import { useSelector } from 'react-redux';
 
 function App() {
   const dispatch = useDispatch();
@@ -30,9 +30,9 @@ function App() {
     })
   }
 
-  const addFeedbackItem = (newItem) => {
+  const addFeedbackItem = (newFeedback) => {
     axios
-      .post('/feedbackRouter', newItem)
+      .post('/feedbackRouter', newFeedback)
       .then((response) => {
         getFeedback();
       })
@@ -41,6 +41,7 @@ function App() {
         console.error('Error adding to feedback', error);
       });
   };
+  
   return (
     <div className='App'>
       <Router>
@@ -66,7 +67,9 @@ function App() {
         </Route>
 
         <Route path="/OrderDetails" exact>
-          <OrderDetails />
+          <OrderDetails 
+          addFeedbackItem={addFeedbackItem}
+          />
         </Route>
 
         <Route path="/CompletedSurvey" exact>

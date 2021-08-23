@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-function OrderDetails() {
+function OrderDetails(addFeedbackItem) {
     const history = useHistory();
 
     const feelings = useSelector(store => store.FeelingReducer)
@@ -25,7 +25,7 @@ function OrderDetails() {
     const handleSubmit = event => {
         event.preventDefault();
         addFeedbackItem(newFeedback);
-        history.push('./CompletedSurvey');
+        history.push('/CompletedSurvey');
     }
     return (
         <div>
